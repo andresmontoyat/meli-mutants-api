@@ -1,0 +1,3 @@
+rootProject.name = 'meli-mutants-api'
+include 'mutants-analyzer'
+
