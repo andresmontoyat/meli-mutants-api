@@ -1,14 +1,12 @@
 package analizer.direction;
 
-import java.util.concurrent.Callable;
-
 /**
  * Dna Analizer for Top diagonal up direction
  *
  * @author andres montoya - andresmontoyat@gmail.com
  * @version 1.0
  */
-public class DnaMutantAnalyzerTopDiagonalUpDirection extends AbstractDnaAnalyzerDirection implements Callable {
+public class DnaMutantAnalyzerTopDiagonalUpDirection extends AbstractDnaMutantAnalyzer implements DnaMutantAnalyzeDirection {
 
     public DnaMutantAnalyzerTopDiagonalUpDirection(String[] sequence, Integer minMatch) {
         super(sequence, minMatch);
@@ -23,7 +21,7 @@ public class DnaMutantAnalyzerTopDiagonalUpDirection extends AbstractDnaAnalyzer
                 return Boolean.TRUE;
             }
 
-            matchCount.set(DEFAULT_MATCH_INITIALIZE);
+            matchCount.set(MATCH_INITIALIZE);
         }
 
         return Boolean.FALSE;
@@ -49,5 +47,4 @@ public class DnaMutantAnalyzerTopDiagonalUpDirection extends AbstractDnaAnalyzer
     public boolean isMatchPosition(int anchor, int cursor) {
         return String.valueOf(sequence[anchor + 1].charAt(cursor - 1)).equalsIgnoreCase(String.valueOf(sequence[anchor].charAt(cursor)));
     }
-
 }

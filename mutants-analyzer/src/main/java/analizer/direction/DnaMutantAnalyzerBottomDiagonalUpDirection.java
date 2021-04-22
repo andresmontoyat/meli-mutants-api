@@ -2,7 +2,13 @@ package analizer.direction;
 
 import java.util.concurrent.Callable;
 
-public class DnaMutantAnalyzerBottomDiagonalUpDirection extends AbstractDnaAnalyzerDirection implements Callable {
+/**
+ * Dna Analizer for Bottom diagonal up direction
+ *
+ * @author andres montoya - andresmontoyat@gmail.com
+ * @version 1.0
+ */
+public class DnaMutantAnalyzerBottomDiagonalUpDirection extends AbstractDnaMutantAnalyzer implements DnaMutantAnalyzeDirection {
 
     public DnaMutantAnalyzerBottomDiagonalUpDirection(String[] sequence, Integer minMatch) {
         super(sequence, minMatch);
@@ -17,7 +23,7 @@ public class DnaMutantAnalyzerBottomDiagonalUpDirection extends AbstractDnaAnaly
                 return Boolean.TRUE;
             }
 
-            matchCount.set(DEFAULT_MATCH_INITIALIZE);
+            matchCount.set(MATCH_INITIALIZE);
         }
 
         return Boolean.FALSE;

@@ -1,3 +1,4 @@
 rootProject.name = 'meli-mutants-api'
 include 'mutants-analyzer'
+include 'mutants-api'
 

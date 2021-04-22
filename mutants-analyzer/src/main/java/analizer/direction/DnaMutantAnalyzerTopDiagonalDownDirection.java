@@ -1,14 +1,12 @@
 package analizer.direction;
 
-import java.util.concurrent.Callable;
-
 /**
  * Dna Analizer for Top diagonal down direction
  *
  * @author andres montoya - andresmontoyat@gmail.com
  * @version 1.0
  */
-public class DnaMutantAnalyzerTopDiagonalDownDirection extends AbstractDnaAnalyzerDirection implements Callable {
+public class DnaMutantAnalyzerTopDiagonalDownDirection extends AbstractDnaMutantAnalyzer implements DnaMutantAnalyzeDirection {
 
     public DnaMutantAnalyzerTopDiagonalDownDirection(String[] sequence, Integer minMatch) {
         super(sequence, minMatch);
@@ -17,30 +15,27 @@ public class DnaMutantAnalyzerTopDiagonalDownDirection extends AbstractDnaAnalyz
     @Override
     public Boolean call() {
         for (int i = 0; i < sequenceLength(); i++) {
-            /*anchor = i;
-            cursor = 5;
-
-            while (anchor >= 0 && cursor < sequenceLength()) {
-
-                if (isValidPosition(anchor, cursor) && isMatchPosition(anchor, cursor)) {
-                    matchCount.incrementAndGet();
-                } else {
-                    matchCount.set(DEFAULT_MATCH_INITIALIZE);
-                }
-
-                anchor--;
-                cursor--;
-            }
+            matching(i, sequenceLength() - 1);
 
             if (isMatchSequence()) {
                 return Boolean.TRUE;
-            }*/
+            }
 
-            matchCount.set(DEFAULT_MATCH_INITIALIZE);
-
+            matchCount.set(MATCH_INITIALIZE);
         }
 
         return Boolean.FALSE;
+    }
+
+    @Override
+    void matching(int anchor, int cursor) {
+        if (anchor >= 0 && cursor < sequenceLength()) {
+            if (isValidPosition(anchor, cursor) && isMatchPosition(anchor, cursor)) {
+                matchCount.incrementAndGet();
+            }
+
+            matching(--anchor, --cursor);
+        }
     }
 
     @Override
