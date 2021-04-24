@@ -1,4 +1,6 @@
-package analizer.direction;
+package com.meli.mutants.analizer.direction;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Dna Analizer for Top diagonal down direction
@@ -6,6 +8,7 @@ package analizer.direction;
  * @author andres montoya - andresmontoyat@gmail.com
  * @version 1.0
  */
+@Slf4j
 public class DnaMutantAnalyzerBottomDiagonalDownDirection extends AbstractDnaMutantAnalyzer implements DnaMutantAnalyzeDirection {
 
     public DnaMutantAnalyzerBottomDiagonalDownDirection(String[] sequence, Integer minMatch) {
@@ -14,16 +17,24 @@ public class DnaMutantAnalyzerBottomDiagonalDownDirection extends AbstractDnaMut
 
     @Override
     public Boolean call() {
-        for (int i = sequenceLength(); i >= 0; i--) {
-            matching(i, ZERO);
+        log.info("[START] - DnaMutantAnalyzerBottomDiagonalDownDirection");
+        try {
+            for (int i = sequenceLength(); i >= 0; i--) {
+                matching(i, ZERO);
 
-            if (isMatchSequence()) {
-                return Boolean.TRUE;
+                if (isMatchSequence()) {
+                    log.info("[END] - DnaMutantAnalyzerBottomDiagonalDownDirection");
+                    return Boolean.TRUE;
+                }
+
+                matchCount.set(MATCH_INITIALIZE);
             }
-
-            matchCount.set(MATCH_INITIALIZE);
+        }catch (Exception e) {
+            e.printStackTrace();
         }
 
+
+        log.info("[END] - DnaMutantAnalyzerBottomDiagonalDownDirection");
         return Boolean.FALSE;
     }
 

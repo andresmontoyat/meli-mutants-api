@@ -1,4 +1,4 @@
-package analizer.direction;
+package com.meli.mutants.analizer.direction;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -11,21 +11,25 @@ public class DnaMutantAnalyzerHorizontalDirection extends AbstractDnaMutantAnaly
 
     @Override
     public Boolean call() throws Exception {
-        for (int i = 0; i < sequenceLength(); i++) {
+        log.info("[START] - DnaMutantAnalyzerHorizontalDirection");
+        for (int i = ZERO; i < sequenceLength(); i++) {
             matching(i, ZERO);
 
             if (isMatchSequence()) {
+                log.info("[END] - DnaMutantAnalyzerHorizontalDirection");
                 return Boolean.TRUE;
             }
 
             matchCount.set(MATCH_INITIALIZE);
         }
+
+        log.info("[END] - DnaMutantAnalyzerHorizontalDirection");
         return Boolean.FALSE;
     }
 
     @Override
     public void matching(int anchor, int cursor) {
-        if (anchor >= 0 && cursor < sequenceLength()) {
+        if (cursor < sequenceLength()) {
             if (isValidPosition(anchor, cursor) && isMatchPosition(anchor, cursor)) {
                 matchCount.incrementAndGet();
             }

@@ -1,4 +1,4 @@
-package analizer.direction;
+package com.meli.mutants.analizer.direction;
 
 import java.util.concurrent.Callable;
 

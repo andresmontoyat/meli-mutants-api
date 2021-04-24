@@ -1,4 +1,4 @@
-package analizer.direction;
+package com.meli.mutants.analizer.direction;
 
 import lombok.Getter;
 import lombok.Setter;
