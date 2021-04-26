@@ -22,7 +22,7 @@ public class DnaMutantAnalyzer {
         service.submit(new DnaMutantAnalyzerTopDiagonalDownDirection(dna, minMatch));
         service.submit(new DnaMutantAnalyzerBottomDiagonalUpDirection(dna, minMatch));
         service.submit(new DnaMutantAnalyzerBottomDiagonalDownDirection(dna,  minMatch));
-        
+
         try {
             pool.shutdown();
 
@@ -33,8 +33,8 @@ public class DnaMutantAnalyzer {
                 if(result)
                     break;
             }
-        } catch (ExecutionException | InterruptedException ex) {
-            System.out.println(ex);
+        } catch (Exception e) {
+            System.out.println(e);
         }
 
         return result;
