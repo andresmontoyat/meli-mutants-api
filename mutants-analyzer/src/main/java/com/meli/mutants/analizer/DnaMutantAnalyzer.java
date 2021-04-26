@@ -22,10 +22,10 @@ public class DnaMutantAnalyzer {
         service.submit(new DnaMutantAnalyzerTopDiagonalDownDirection(dna, minMatch));
         service.submit(new DnaMutantAnalyzerBottomDiagonalUpDirection(dna, minMatch));
         service.submit(new DnaMutantAnalyzerBottomDiagonalDownDirection(dna,  minMatch));
-
-        pool.shutdown();
-
+        
         try {
+            pool.shutdown();
+
             while (!pool.isTerminated()) {
                 final Future<Boolean> future = service.take();
                 result = future.get();
