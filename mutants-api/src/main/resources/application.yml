@@ -2,7 +2,7 @@ spring:
   application:
     name: MELI Mutanst Analyzer DNA
   profiles:
-    active: ${MELI_MUTANTS_SERVER_PROFILE:dev}
+    active: ${MELI_MUTANTS_SERVER_PROFILE:prod}
   banner:
     location: classpath:banner.txt
 
