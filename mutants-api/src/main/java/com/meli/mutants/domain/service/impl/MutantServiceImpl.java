@@ -28,20 +28,27 @@ public class MutantServiceImpl implements MutantService {
 
     @Override
     public void isMutant(String[] dna) {
-        if(!isDnaValid(dna))
+        if (!isDnaValid(dna)) {
             throw new MutantDnaInvalidException("The dna sequence is not valid.");
+        }
 
         Boolean isHumam = Boolean.TRUE;
-        Boolean isMutant = Boolean.FALSE;
+        Boolean isMutant = analyze(dna);
 
+        newRecord(dna, isHumam, isMutant);
 
-       DnaMutantAnalyzer dnaMutantAnalyzer = new DnaMutantAnalyzer();
-       isMutant = dnaMutantAnalyzer.isMutant(dna, 4);
+        if (!isMutant) {
+            throw new MutantDnaInvalidException("The analyzed DNA is not from a mutant");
+        }
+    }
 
-       mutantRepository.register(dna, isHumam, isMutant);
+    private void newRecord(String[] dna, Boolean isHumam, Boolean isMutant) {
+        mutantRepository.register(dna, isHumam, isMutant);
+    }
 
-       if(!isMutant)
-           throw new MutantDnaInvalidException("The analyzed DNA is not from a mutant");
+    private Boolean analyze(String[] dna) {
+        DnaMutantAnalyzer dnaMutantAnalyzer = new DnaMutantAnalyzer();
+        return dnaMutantAnalyzer.isMutant(dna, 4);
     }
 
     private boolean isDnaValid(String[] dna) {
@@ -55,8 +62,9 @@ public class MutantServiceImpl implements MutantService {
                 matches++;
             }
 
-            if(matches < dna[i].length())
+            if (matches < dna[i].length()) {
                 return Boolean.FALSE;
+            }
         }
 
         return Boolean.TRUE;

@@ -8,11 +8,10 @@ import javax.persistence.*;
  * @author andres montoya - andresmontoyat@gmail.com
  * @version 1.0
  */
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor(access =AccessLevel.PRIVATE)
-@ToString
-@EqualsAndHashCode
 @Builder
 @Entity
 @Table(name = "mutants")

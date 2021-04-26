@@ -14,8 +14,11 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-devtools'
     implementation 'org.postgresql:postgresql:42.2.9'
+    implementation 'com.h2database:h2'
 
     implementation project(':mutants-analyzer')
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine'
 }

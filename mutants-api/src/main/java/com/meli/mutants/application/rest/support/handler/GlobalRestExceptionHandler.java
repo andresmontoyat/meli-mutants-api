@@ -25,12 +25,12 @@ public class GlobalRestExceptionHandler {
     @ExceptionHandler(RestException.class)
     public ResponseEntity<ApiError> resolveRestException(HttpServletRequest request, HttpServletResponse response, RestException e, Locale locale) {
         log.error(e.getMessage(), e);
-        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ApiError.builder().code(ApiError.API_ERROR_DEFAULT_CODE).message(e.getMessage()).errors(e.getErrors()).build());
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(new ApiError(ApiError.API_ERROR_DEFAULT_CODE, e.getMessage(), e.getErrors()));
     }
 
     @ExceptionHandler(MutantDnaInvalidException.class)
     public ResponseEntity<ApiError> resolveMutantDnaInvalidException(HttpServletRequest request, HttpServletResponse response, MutantDnaInvalidException e, Locale locale) {
         log.error(e.getMessage(), e);
-        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ApiError.builder().code(ApiError.API_ERROR_DEFAULT_CODE).message(e.getMessage()).build());
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(new ApiError(ApiError.API_ERROR_DEFAULT_CODE, e.getMessage(), null));
     }
 }

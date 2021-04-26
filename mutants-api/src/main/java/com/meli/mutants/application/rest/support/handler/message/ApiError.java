@@ -26,7 +26,6 @@ public class ApiError<T> {
     @JsonProperty("errors")
     private T errors;
 
-    @Builder
     public ApiError(String code, String message, T errors) {
         this.code = code;
         this.message = message;
