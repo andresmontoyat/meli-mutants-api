@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: ${MELI_MUTANTS_DRIVER_CLASS:org.postgresql.Driver}
+    url: ${MELI_MUTANTS_DB_URL}
+    username: ${MELI_MUTANTS_DB_USERNAME}
+    password: ${MELI_MUTANTS_DB_PASSWORD}
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    generate-ddl: ${MELI_MUTANTS_JPA_GENERATE_DDL:true}
+    hibernate:
+      ddl-auto: ${MELI_MUTANTS_JPA_DDL_AUTO:update}
+    show-sql: ${MELI_MUTANTS_JPA_SHOW_SQL:true}

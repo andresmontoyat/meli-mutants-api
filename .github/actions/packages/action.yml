@@ -1,0 +1,25 @@
+name: 'Clean Packages'
+description: 'Clean packages by package name'
+inputs:
+  token:
+    description: >
+      The token used to authenticate with GitHub Packages.
+    required: true
+  owner:
+    description: >
+      Owner of the repo hosting the package.
+    required: true
+  repository:
+    description: >
+      Repo hosting the package.
+    required: true
+  versions:
+    description: >
+      The number of old versions to delete starting from the oldest version.
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+branding:
+  icon: 'delete'
+  color: 'green'
