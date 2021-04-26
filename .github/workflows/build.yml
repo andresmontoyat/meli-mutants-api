@@ -25,7 +25,7 @@ jobs:
           distribution: 'adopt'
           java-version: 8
       - name: Build with gradle
-        run: gradle --build-cache build -x test
+        run: gradle --build-cache build
       - name: Publish to gitHub packages
         run: gradle publish
         env:
@@ -41,7 +41,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Build with gradle
         run: |
-          gradle --build-cache build -x test
+          gradle --build-cache build
         env:
           GH_PACKAGES_USERNAME: ${{ github.actor }}
           GH_PACKAGES_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}

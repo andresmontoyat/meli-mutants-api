@@ -1,5 +1,20 @@
 plugins {
-    id 'java'
+    id "org.springframework.boot" version "${spring_dependencies_version}"
+}
+
+bootJar {
+    from('src/main/resources/.ebextensions') {
+        into('.ebextensions')
+    }
+    enabled = true
+}
+
+configurations {
+    [apiElements, runtimeElements].each {
+        it.outgoing.artifacts.removeIf {
+            it.buildDependencies.getDependencies(null).contains(jar) }
+        it.outgoing.artifact(bootJar)
+    }
 }
 
 dependencies {
