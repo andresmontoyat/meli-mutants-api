@@ -1,0 +1,60 @@
+{
+	"info": {
+		"_postman_id": "bbfd9b06-4fa4-48c0-b4b6-feb66f311de7",
+		"name": "Mercadolibre",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Is a mutan?",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"dna\": [\"ATGGGA\",\"CGGTGC\",\"TTCTGT\",\"AGTATG\",\"CCGCTA\",\"TCACTT\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://meli-test-prod-env.us-east-1.elasticbeanstalk.com/mutant",
+					"protocol": "http",
+					"host": [
+						"meli-test-prod-env",
+						"us-east-1",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"mutant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Stats",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://meli-test-prod-env.us-east-1.elasticbeanstalk.com/stats",
+					"protocol": "http",
+					"host": [
+						"meli-test-prod-env",
+						"us-east-1",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"stats"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

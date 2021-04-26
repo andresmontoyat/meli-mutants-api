@@ -1,4 +1,3 @@
-<!-- ABOUT THE PROJECT -->
 ## About The Project
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
@@ -21,49 +20,52 @@ This section should list any major frameworks that you built your project using.
 * [JQuery](https://jquery.com)
 * [Laravel](https://laravel.com)
 
+### Coverage
+![image](coverage.png)
+
+### Test
+
+![image](test.png)
+
+### Continuous Integration and deployemnt
+
+We use "Github Actions" for basic continuous integration. We use a build pipeline for building packages and
+and for the deployment we use docker with automatic deployment of an instance in AWS ElasticBeanstalk
 
 
-<!-- GETTING STARTED -->
+- [Repository Actions](https://github.com/andresmontoyat/meli-mutants-api/actions)
+- [Github Packages](https://docs.github.com/en/packages)
+- [Github Actions](https://docs.github.com/en/actions)
+
+![image](github-actions.png)
+
 ## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+Remember to have java and gradle installed.
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
+1. Fork this repo https://github.com/andresmontoyat/meli-mutants-api.git
+
 2. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/andresmontoyat/meli-mutants-api.git
    ```
-3. Install NPM packages
+3. Build repo 
    ```sh
-   npm install
+   gradle build
    ```
-4. Enter your API in `config.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
-   ```
+4. or import repo a your favorite IDE
 
 
-
-<!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+To test the service you can make use of postman `postman.json` files in the root of the project.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+_For more information, please refer to the [Swagger Documentation](http://meli-test-prod-env.us-east-1.elasticbeanstalk.com/swagger-ui.html)_
 
-
-<!-- CONTRIBUTING -->
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -74,13 +76,10 @@ Contributions are what make the open source community such an amazing place to b
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<!-- LICENSE -->
 ## License
 
 See `LICENSE.md` for more information.
 
-
-<!-- CONTACT -->
 ## Contact
 
 Andres Montoya - [@github](https://github.com/andresmontoyat) - andresmontoyat@gmail.com
