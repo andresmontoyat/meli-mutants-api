@@ -31,6 +31,11 @@ public class DnaMutantAnalyzerVerticalDirection extends AbstractDnaMutantAnalyze
         if (anchor < sequenceLength()) {
             if (isValidPosition(anchor, cursor) && isMatchPosition(anchor, cursor)) {
                 matchCount.incrementAndGet();
+                if (isMatchSequence()) {
+                    return;
+                }
+            }else {
+                matchCount.set(MATCH_INITIALIZE);
             }
 
             matching(++anchor, cursor);

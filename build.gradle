@@ -46,6 +46,26 @@ allprojects {
             property "sonar.exclusions", "**/*Test*/**"
         }
     }
+
+    publishing {
+
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                url = uri("${github_packages_url}/meli-mutants-api")
+                credentials {
+                    username = System.getenv("GH_PACKAGES_USERNAME")
+                    password = System.getenv("GH_PACKAGES_TOKEN")
+                }
+            }
+        }
+
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+            }
+        }
+    }
 }
 
 tasks.withType(JavaCompile) {

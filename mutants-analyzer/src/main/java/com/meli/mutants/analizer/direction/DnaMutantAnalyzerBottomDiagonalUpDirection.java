@@ -38,6 +38,11 @@ public class DnaMutantAnalyzerBottomDiagonalUpDirection extends AbstractDnaMutan
         if (anchor < sequenceLength() && cursor >= ZERO) {
             if (isValidPosition(anchor, cursor) && isMatchPosition(anchor, cursor)) {
                 matchCount.incrementAndGet();
+                if (isMatchSequence()) {
+                    return;
+                }
+            }else {
+                matchCount.set(MATCH_INITIALIZE);
             }
 
             matching(++anchor, --cursor);

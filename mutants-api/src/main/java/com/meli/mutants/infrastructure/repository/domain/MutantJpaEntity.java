@@ -1,16 +1,19 @@
 package com.meli.mutants.infrastructure.repository.domain;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
+/**
+ * @author andres montoya - andresmontoyat@gmail.com
+ * @version 1.0
+ */
 @Data
 @NoArgsConstructor
+@AllArgsConstructor(access =AccessLevel.PRIVATE)
 @ToString
 @EqualsAndHashCode
+@Builder
 @Entity
 @Table(name = "mutants")
 public class MutantJpaEntity {
@@ -22,6 +25,9 @@ public class MutantJpaEntity {
 
     @Column(nullable = false)
     private String[] dna;
+
+    @Column(nullable = false)
+    private Boolean human;
 
     @Column(nullable = false)
     private Boolean mutant;

@@ -19,7 +19,7 @@ public class DnaMutantAnalyzerBottomDiagonalDownDirection extends AbstractDnaMut
     public Boolean call() {
         log.info("[START] - DnaMutantAnalyzerBottomDiagonalDownDirection");
         try {
-            for (int i = sequenceLength(); i >= 0; i--) {
+            for (int i = sequenceLength() -1; i >= 0; i--) {
                 matching(i, ZERO);
 
                 if (isMatchSequence()) {
@@ -43,6 +43,11 @@ public class DnaMutantAnalyzerBottomDiagonalDownDirection extends AbstractDnaMut
         if (anchor >= 0 && cursor < sequenceLength()) {
             if (isValidPosition(anchor, cursor) && isMatchPosition(anchor, cursor)) {
                 matchCount.incrementAndGet();
+                if (isMatchSequence()) {
+                    return;
+                }
+            }else {
+                matchCount.set(MATCH_INITIALIZE);
             }
 
             matching(--anchor, ++cursor);
@@ -51,7 +56,7 @@ public class DnaMutantAnalyzerBottomDiagonalDownDirection extends AbstractDnaMut
 
     @Override
     public boolean isValidPosition(int anchor, int cursor) {
-        return ((anchor + 1) >= 0 && (cursor + 1) < sequenceLength());
+        return ((anchor - 1) >= 0 && ((cursor - 1) >= 0 && (cursor - 1) < sequenceLength()));
     }
 
     @Override

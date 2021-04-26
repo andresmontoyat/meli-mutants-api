@@ -5,6 +5,10 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * @author andres montoya - andresmontoyat@gmail.com
+ * @version 1.0
+ */
 @Getter
 @Setter
 public class MutantAnalyzerRequest {
