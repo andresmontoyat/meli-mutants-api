@@ -35,7 +35,7 @@ public class DnaMutantAnalyzerBottomDiagonalUpDirection extends AbstractDnaMutan
 
     @Override
     public void matching(int anchor, int cursor) {
-        if (anchor < sequenceLength() && cursor >= ZERO) {
+        if ((anchor < sequenceLength() && anchor >= 0) && (cursor >= ZERO && cursor < sequenceLength())) {
             if (isValidPosition(anchor, cursor) && isMatchPosition(anchor, cursor)) {
                 matchCount.incrementAndGet();
                 if (isMatchSequence()) {

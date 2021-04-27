@@ -49,7 +49,7 @@ jobs:
         run: |
           CURRENT_DATE=`date +%s`
           export AWSEB_RELEASE_VERSION="$APP_NAME-1.0.0-RELEASE-$CURRENT_DATE.jar"
-          export LOCALDIR_RELEASE_VERSION="$GITHUB_WORKSPACE/mutants-api/build/libs/mutants-api-1.0.0.jar"
+          export LOCALDIR_RELEASE_VERSION="$GITHUB_WORKSPACE/mutants-api/build/libs/mutants-api-1.0.1.jar"
           awseb
         env:
           APP_NAME: meli-mutants-api
