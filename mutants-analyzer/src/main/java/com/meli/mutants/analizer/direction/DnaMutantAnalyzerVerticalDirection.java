@@ -2,6 +2,12 @@ package com.meli.mutants.analizer.direction;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * search the dna sequence through the matrix vertically
+ *
+ * @author andres montoya - andresmontoyat@gmail.com
+ * @version 1.0
+ */
 @Slf4j
 public class DnaMutantAnalyzerVerticalDirection extends AbstractDnaMutantAnalyzer implements DnaMutantAnalyzeDirection {
 

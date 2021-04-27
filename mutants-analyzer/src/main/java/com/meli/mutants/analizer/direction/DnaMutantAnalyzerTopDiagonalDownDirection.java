@@ -3,7 +3,7 @@ package com.meli.mutants.analizer.direction;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Dna Analizer for Top diagonal down direction
+ * Search the sequence through the matrix diagonally down from bottom
  *
  * @author andres montoya - andresmontoyat@gmail.com
  * @version 1.0

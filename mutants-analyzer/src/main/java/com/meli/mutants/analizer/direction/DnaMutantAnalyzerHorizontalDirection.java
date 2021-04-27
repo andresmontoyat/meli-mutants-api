@@ -2,6 +2,12 @@ package com.meli.mutants.analizer.direction;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Search the sequence through the matrix horizontally
+ *
+ * @author andres montoya - andresmontoyat@gmail.com
+ * @version 1.0
+ */
 @Slf4j
 public class DnaMutantAnalyzerHorizontalDirection extends AbstractDnaMutantAnalyzer implements DnaMutantAnalyzeDirection {
 

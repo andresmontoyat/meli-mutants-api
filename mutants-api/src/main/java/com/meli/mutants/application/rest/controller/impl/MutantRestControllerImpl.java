@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * Class that allows exposing the different endpoints of exposed rest services
+ *
  * @author andres montoya - andresmontoyat@gmail.com
  * @version 1.0
  */
@@ -35,7 +37,7 @@ public class MutantRestControllerImpl implements MutantRestController {
     @PostMapping("/mutant")
     @Override
     public ResponseEntity isMutant(@RequestBody @Validated MutantAnalyzerRequest mutantAnalyzerRequest, BindingResult result) {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             throw new RestException("An error occurred while trying to validate bean information", HttpStatus.UNPROCESSABLE_ENTITY, result.getAllErrors());
         }
 

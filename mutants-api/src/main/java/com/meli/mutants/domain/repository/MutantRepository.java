@@ -8,7 +8,17 @@ import com.meli.mutants.domain.model.MutantStats;
  */
 public interface MutantRepository {
 
+    /**
+     * Seach all stats
+     * @return
+     */
     MutantStats stats();
 
+    /**
+     * Create a new record for dna sequence
+     * @param dna
+     * @param isHumam
+     * @param isMutant
+     */
     void register(String[] dna, Boolean isHumam, Boolean isMutant);
 }

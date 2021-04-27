@@ -8,12 +8,13 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 
 
 /**
+ * Class for dna Analizer with AsyncTaskExecutor
+ *
  * @author andres montoya - andresmontoyat@gmail.com
  * @version 1.0
  */

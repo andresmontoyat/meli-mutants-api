@@ -11,6 +11,8 @@ import java.math.BigInteger;
 import java.util.Map;
 
 /**
+ * Class that allows access to database operations
+ *
  * @author andres montoya - andresmontoyat@gmail.com
  * @version 1.0
  */

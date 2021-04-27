@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 
 /**
+ * Interface that allows exposing the different endpoints of exposed rest services
+ *
  * @author andres montoya - andresmontoyat@gmail.com
  * @version 1.0
  */

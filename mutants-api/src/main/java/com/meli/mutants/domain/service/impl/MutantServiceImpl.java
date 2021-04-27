@@ -12,6 +12,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * Class that allows to validate if the DNA sequence is valid and if it belongs to a mutant
+ *
  * @author andres montoya - andresmontoyat@gmail.com
  * @version 1.0
  */
@@ -50,10 +52,16 @@ public class MutantServiceImpl implements MutantService {
     }
 
     private Boolean analyze(String[] dna) {
-       // DnaMutantAnalyzer dnaMutantAnalyzer = new DnaMutantAnalyzer();
+        // DnaMutantAnalyzer dnaMutantAnalyzer = new DnaMutantAnalyzer();
         return dnaMutantAnalyzer.isMutant(dna, 4);
     }
 
+    /**
+     * Check if it dna sequece is valid
+     *
+     * @param dna
+     * @return true or false
+     */
     private boolean isDnaValid(String[] dna) {
 
         for (int i = 0; i < dna.length; i++) {

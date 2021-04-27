@@ -6,7 +6,6 @@ import lombok.Setter;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- *
  * @author andres montoya - andresmontoyat@gmail.com
  * @version 1.0
  */
@@ -30,15 +29,35 @@ public abstract class AbstractDnaMutantAnalyzer {
     }
 
     public boolean isMatchSequence() {
-       return (matchCount.get() >= minMatch);
+        return (matchCount.get() >= minMatch);
     }
 
     abstract void matching(int anchor, int cursor);
 
+    /**
+     * Check if it valid position in the array
+     *
+     * @param anchor
+     * @param cursor
+     * @return true or false
+     */
     abstract boolean isValidPosition(int anchor, int cursor);
 
+
+    /**
+     * Check if it
+     *
+     * @param anchor
+     * @param cursor
+     * @return
+     */
     abstract boolean isMatchPosition(int anchor, int cursor);
 
+    /**
+     * Return lenght of array
+     *
+     * @return lenght of array
+     */
     protected int sequenceLength() {
         return sequence.length;
     }
