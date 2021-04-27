@@ -1,43 +1,57 @@
 package com.meli.mutants.analizer;
 
 import com.meli.mutants.analizer.direction.*;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.task.AsyncTaskExecutor;
+import org.springframework.stereotype.Component;
 
-import java.util.concurrent.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.stream.Collectors;
 
 
 /**
  * @author andres montoya - andresmontoyat@gmail.com
  * @version 1.0
  */
+@Slf4j
+@Component
 public class DnaMutantAnalyzer {
 
+    @Autowired
+    private AsyncTaskExecutor taskExecutor;
+
     public Boolean isMutant(String[] dna, Integer minMatch) {
-        Boolean result = Boolean.FALSE;
 
-        ExecutorService pool = Executors.newFixedThreadPool(8);
-        CompletionService service = new ExecutorCompletionService(pool);
-        service.submit(new DnaMutantAnalyzerHorizontalDirection(dna, minMatch));
-        service.submit(new DnaMutantAnalyzerVerticalDirection(dna, minMatch));
-        service.submit(new DnaMutantAnalyzerTopDiagonalUpDirection(dna, minMatch));
-        service.submit(new DnaMutantAnalyzerTopDiagonalDownDirection(dna, minMatch));
-        service.submit(new DnaMutantAnalyzerBottomDiagonalUpDirection(dna, minMatch));
-        service.submit(new DnaMutantAnalyzerBottomDiagonalDownDirection(dna,  minMatch));
+        List<Future<Boolean>> futures = Arrays.asList(new DnaMutantAnalyzerHorizontalDirection(dna, minMatch),
+                new DnaMutantAnalyzerVerticalDirection(dna, minMatch),
+                new DnaMutantAnalyzerTopDiagonalUpDirection(dna, minMatch),
+                new DnaMutantAnalyzerTopDiagonalDownDirection(dna, minMatch),
+                new DnaMutantAnalyzerBottomDiagonalUpDirection(dna, minMatch),
+                new DnaMutantAnalyzerBottomDiagonalDownDirection(dna,  minMatch))
+                .stream().map(direction -> taskExecutor.submit(direction)).collect(Collectors.toList());
 
-        try {
-            pool.shutdown();
+        log.info("Waiting for everything to finish...");
+        List<Boolean> results = futures.stream()
+                .map(i -> {
+                    try {
+                        return i.get();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    return Boolean.FALSE;
+                })
+                .collect(Collectors.toList());
 
-            while (!pool.isTerminated()) {
-                final Future<Boolean> future = service.take();
-                result = future.get();
-
-                if(result)
-                    break;
-            }
-        } catch (Exception e) {
-            System.out.println(e);
+        for (Boolean result : results) {
+            if(Boolean.TRUE.equals(result))
+                return Boolean.TRUE;
         }
 
-        return result;
+        return Boolean.FALSE;
     }
 
 }

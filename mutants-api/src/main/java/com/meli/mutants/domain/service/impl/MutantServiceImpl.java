@@ -22,8 +22,11 @@ public class MutantServiceImpl implements MutantService {
 
     private final MutantRepository mutantRepository;
 
-    public MutantServiceImpl(MutantRepository mutantRepository) {
+    private final DnaMutantAnalyzer dnaMutantAnalyzer;
+
+    public MutantServiceImpl(MutantRepository mutantRepository, DnaMutantAnalyzer dnaMutantAnalyzer) {
         this.mutantRepository = mutantRepository;
+        this.dnaMutantAnalyzer = dnaMutantAnalyzer;
     }
 
     @Override
@@ -47,7 +50,7 @@ public class MutantServiceImpl implements MutantService {
     }
 
     private Boolean analyze(String[] dna) {
-        DnaMutantAnalyzer dnaMutantAnalyzer = new DnaMutantAnalyzer();
+       // DnaMutantAnalyzer dnaMutantAnalyzer = new DnaMutantAnalyzer();
         return dnaMutantAnalyzer.isMutant(dna, 4);
     }
 

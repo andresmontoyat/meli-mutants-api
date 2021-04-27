@@ -19,7 +19,7 @@ public class DnaMutantAnalyzerBottomDiagonalDownDirection extends AbstractDnaMut
     public Boolean call() {
         log.info("[START] - DnaMutantAnalyzerBottomDiagonalDownDirection");
         try {
-            for (int i = sequenceLength() -1; i >= 0; i--) {
+            for (int i = sequenceLength() - 1; i >= 0; i--) {
                 matching(i, ZERO);
 
                 if (isMatchSequence()) {
@@ -33,14 +33,13 @@ public class DnaMutantAnalyzerBottomDiagonalDownDirection extends AbstractDnaMut
             e.printStackTrace();
         }
 
-
         log.info("[END] - DnaMutantAnalyzerBottomDiagonalDownDirection");
         return Boolean.FALSE;
     }
 
     @Override
     void matching(int anchor, int cursor) {
-        if (anchor >= 0 && cursor < sequenceLength()) {
+        if ((anchor >= 0 && anchor < sequenceLength()) && (cursor >= 0 && cursor < sequenceLength())) {
             if (isValidPosition(anchor, cursor) && isMatchPosition(anchor, cursor)) {
                 matchCount.incrementAndGet();
                 if (isMatchSequence()) {
@@ -50,18 +49,18 @@ public class DnaMutantAnalyzerBottomDiagonalDownDirection extends AbstractDnaMut
                 matchCount.set(MATCH_INITIALIZE);
             }
 
-            matching(--anchor, ++cursor);
+            matching(++anchor, ++cursor);
         }
     }
 
     @Override
     public boolean isValidPosition(int anchor, int cursor) {
-        return ((anchor - 1) >= 0 && ((cursor - 1) >= 0 && (cursor - 1) < sequenceLength()));
+        return (((anchor - 1) >= 0 && anchor < sequenceLength())&& ((cursor - 1) >= 0 && (cursor - 1) < sequenceLength()));
     }
 
     @Override
     public boolean isMatchPosition(int anchor, int cursor) {
-        return String.valueOf(sequence[anchor + 1].charAt(cursor + 1)).equalsIgnoreCase(String.valueOf(sequence[anchor].charAt(cursor)));
+        return String.valueOf(sequence[anchor - 1].charAt(cursor - 1)).equalsIgnoreCase(String.valueOf(sequence[anchor].charAt(cursor)));
     }
 
 }
